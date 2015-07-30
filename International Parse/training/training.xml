@@ -191,4 +191,180 @@
   <TokenSequence><BuildingName>Shaw</BuildingName> <BuildingName>Centre,</BuildingName> <CountryName>Singapore</CountryName></TokenSequence>
   <TokenSequence><CityName>Sutton</CityName></TokenSequence>
   <TokenSequence><CityName>Dublin</CityName></TokenSequence>
+    <TokenSequence><CityName>Oxford</CityName>
+  </TokenSequence>
+  <TokenSequence><AddressNumber>1-3</AddressNumber> <StreetName>Warwick</StreetName> <StreetNamePostType>Street,</StreetNamePostType> <CityName>Worthing,;</CityName> <RegionName>West</RegionName> <RegionName>Sussex</RegionName> <ZipCode>BN11</ZipCode> <ZipCode>3DE.</ZipCode> <CountryName>United</CountryName> <CountryName>Kingdom</CountryName></TokenSequence>
+  <TokenSequence><CityName>Paris</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Chesterfield,</CityName> <StateName>Derby</StateName></TokenSequence>
+  <TokenSequence><AddressNumber>4</AddressNumber> <StreetName>Moorgate;</StreetName> <CityName>London</CityName></TokenSequence>
+  <TokenSequence><CityName>Oakville,</CityName> <RegionName>Ontario,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Uxbridge,</CityName> <RegionName>Ontario</RegionName></TokenSequence>
+  <TokenSequence><RegionName>Minato-ku,</RegionName> <CityName>Tokyo,</CityName></TokenSequence>
+  <TokenSequence><CityName>Geneva</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Abingdon,</CityName> <RegionName>Oxon,</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>85</AddressNumber> <StreetName>Rue</StreetName> <StreetNamePostType>St.</StreetNamePostType> <RegionName>Dominique;</RegionName> <ZipCode>75007</ZipCode> <CityName>Paris</CityName></TokenSequence>
+  <TokenSequence><CityName>Toronto,</CityName> <RegionName>Ontario</RegionName></TokenSequence>
+  <TokenSequence><CityName>Helsingborg</CityName>
+  </TokenSequence>
+  <TokenSequence><RegionName>Pemberton,</RegionName> <CityName>Wigan</CityName></TokenSequence>
+  <TokenSequence><CityName>Basingstoke,</CityName> <RegionName>Hants</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>100</AddressNumber> <StreetName>St</StreetName> <StreetName>Georges</StreetName> <StreetName>Terrace;</StreetName> <CityName>PERTH,</CityName> <RegionName>Western</RegionName> <RegionName>Australia,</RegionName> <CountryName>Australia</CountryName></TokenSequence>
+  <TokenSequence><CityName>Haywards</CityName> <RegionName>Heath</RegionName></TokenSequence>
+  <TokenSequence><CityName>Market</CityName> <CityName>Harborough</CityName></TokenSequence>
+  <TokenSequence><RegionName>Surrey</RegionName> <CountryName>United</CountryName> <CountryName>Kingdom</CountryName></TokenSequence>
+  <TokenSequence><BuildingName>City</BuildingName> <BuildingName>Centre,</BuildingName> <CityName>Oxford,</CityName></TokenSequence>
+  <TokenSequence><CityName>Ormskirk</CityName> <RegionName>Lancs</RegionName></TokenSequence>
+  <TokenSequence><CityName>Thatcham,</CityName> <RegionName>Berks</RegionName></TokenSequence>
+  <TokenSequence><CityName>London,</CityName> <CountryName>United</CountryName> <CountryName>Kingdom</CountryName></TokenSequence>
+  <TokenSequence><CityName>Farnborough</CityName> <RegionName>Hants</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>31</AddressNumber> <StreetName>South</StreetName> <StreetName>Chester</StreetName> <StreetNamePostType>Road</StreetNamePostType> <CityName>Swarthmore,</CityName> <StateName>Pennsylvania,</StateName> <CountryName>USA</CountryName></TokenSequence>
+  <TokenSequence>
+    <CityName>Oxford</CityName>
+  </TokenSequence>
+  <TokenSequence>
+    <CityName>London</CityName>
+  </TokenSequence>
+  <TokenSequence>
+    <CityName>Berlin</CityName>
+  </TokenSequence>
+  <TokenSequence><BuildingName>Shaw</BuildingName> <BuildingName>Centre,</BuildingName> <CountryName>Singapore</CountryName></TokenSequence>
+  <TokenSequence>
+    <CityName>Sutton</CityName>
+  </TokenSequence>
+  <TokenSequence>
+    <CityName>Dublin</CityName>
+  </TokenSequence>
+  <TokenSequence><RegionName>Ontario,</RegionName> <CountryName>Canada</CountryName> <NotAddress>Postal</NotAddress> <NotAddress>Code,</NotAddress></TokenSequence>
+  <TokenSequence><CityName>Oxford</CityName></TokenSequence>
+  <TokenSequence><CityName>Galway</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>25</AddressNumber> <StreetName>Canada</StreetName> <StreetNamePostType>Square,</StreetNamePostType> <CityName>Canary</CityName> <CityName>Wharf</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>1-2-7</AddressNumber> <StreetName>Shintomi,</StreetName> <RegionName>Kawagoe,</RegionName> <CityName>Saitama,</CityName> <CountryName>Japan</CountryName></TokenSequence>
+  <TokenSequence><CityName>GENOVA</CityName></TokenSequence>
+  <TokenSequence><CityName>POHJOLA,</CityName> <CountryName>Finland</CountryName></TokenSequence>
+  <TokenSequence><CityName>Zurich</CityName></TokenSequence>
+  <TokenSequence><CityName>London</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>21,</AddressNumber> <StreetName>Panepistimiou</StreetName> <StreetNamePostType>St.</StreetNamePostType> <CityName>Athens,</CityName> <CountryName>Greece</CountryName></TokenSequence>
+  <TokenSequence><CityName>Ottawa,</CityName> <RegionName>Ontario,</RegionName> <CountryName>Canada</CountryName></TokenSequence>
+  <TokenSequence><CityName>Laval,</CityName> <RegionName>Qc,</RegionName> <CountryName>Canada,</CountryName></TokenSequence>
+  <TokenSequence><RegionName>West</RegionName> <RegionName>Sussex.</RegionName></TokenSequence>
+  <TokenSequence><CityName>Columbia,</CityName> <StateName>SC</StateName> <CountryName>USA</CountryName></TokenSequence>
+  <TokenSequence><RegionName>BRUSSELS,</RegionName> <CityName>BELGIUM</CityName></TokenSequence>
+  <TokenSequence><CityName>Dublin</CityName></TokenSequence>
+  <TokenSequence><CityName>Rochester,</CityName> <StateName>MN,</StateName> <RegionName>USA</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>20</AddressNumber> <StreetName>QUEEN</StreetName> <StreetNamePostType>St.</StreetNamePostType> <NotAddress>West,</NotAddress> <CityName>TORONTO,</CityName> <RegionName>ONTARIO,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Lewes,</CityName> <RegionName>East</RegionName> <RegionName>Sussex,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Slough</CityName></TokenSequence>
+  <TokenSequence><CityName>Valbonne</CityName> <CountryName>France</CountryName></TokenSequence>
+  <TokenSequence><CityName>Berlin</CityName></TokenSequence>
+  <TokenSequence><CityName>Montreal,</CityName> <RegionName>Qc,</RegionName> <CountryName>Canada</CountryName></TokenSequence>
+  <TokenSequence><CityName>Jerusalem,</CityName> <CountryName>Israel</CountryName></TokenSequence>
+    <TokenSequence><CityName>Oxford</CityName>
+  </TokenSequence>
+  <TokenSequence><AddressNumber>1-3</AddressNumber> <StreetName>Warwick</StreetName> <StreetNamePostType>Street,</StreetNamePostType> <CityName>Worthing,;</CityName> <RegionName>West</RegionName> <RegionName>Sussex</RegionName> <ZipCode>BN11</ZipCode> <ZipCode>3DE.</ZipCode> <CountryName>United</CountryName> <CountryName>Kingdom</CountryName></TokenSequence>
+  <TokenSequence><CityName>Paris</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Chesterfield,</CityName> <StateName>Derby</StateName></TokenSequence>
+  <TokenSequence><AddressNumber>4</AddressNumber> <StreetName>Moorgate;</StreetName> <CityName>London</CityName></TokenSequence>
+  <TokenSequence><CityName>Oakville,</CityName> <RegionName>Ontario,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Uxbridge,</CityName> <RegionName>Ontario</RegionName></TokenSequence>
+  <TokenSequence><RegionName>Minato-ku,</RegionName> <CityName>Tokyo,</CityName></TokenSequence>
+  <TokenSequence><CityName>Geneva</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Abingdon,</CityName> <RegionName>Oxon,</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>85</AddressNumber> <StreetName>Rue</StreetName> <StreetNamePostType>St.</StreetNamePostType> <RegionName>Dominique;</RegionName> <ZipCode>75007</ZipCode> <CityName>Paris</CityName></TokenSequence>
+  <TokenSequence><CityName>Toronto,</CityName> <RegionName>Ontario</RegionName></TokenSequence>
+  <TokenSequence><CityName>Helsingborg</CityName>
+  </TokenSequence>
+  <TokenSequence><RegionName>Pemberton,</RegionName> <CityName>Wigan</CityName></TokenSequence>
+  <TokenSequence><CityName>Basingstoke,</CityName> <RegionName>Hants</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>100</AddressNumber> <StreetName>St</StreetName> <StreetName>Georges</StreetName> <StreetName>Terrace;</StreetName> <CityName>PERTH,</CityName> <RegionName>Western</RegionName> <RegionName>Australia,</RegionName> <CountryName>Australia</CountryName></TokenSequence>
+  <TokenSequence><CityName>Haywards</CityName> <RegionName>Heath</RegionName></TokenSequence>
+  <TokenSequence><CityName>Market</CityName> <CityName>Harborough</CityName></TokenSequence>
+  <TokenSequence><RegionName>Surrey</RegionName> <CountryName>United</CountryName> <CountryName>Kingdom</CountryName></TokenSequence>
+  <TokenSequence><BuildingName>City</BuildingName> <BuildingName>Centre,</BuildingName> <CityName>Oxford,</CityName></TokenSequence>
+  <TokenSequence><CityName>Ormskirk</CityName> <RegionName>Lancs</RegionName></TokenSequence>
+  <TokenSequence><CityName>Thatcham,</CityName> <RegionName>Berks</RegionName></TokenSequence>
+  <TokenSequence><CityName>London,</CityName> <CountryName>United</CountryName> <CountryName>Kingdom</CountryName></TokenSequence>
+  <TokenSequence><CityName>Farnborough</CityName> <RegionName>Hants</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>31</AddressNumber> <StreetName>South</StreetName> <StreetName>Chester</StreetName> <StreetNamePostType>Road</StreetNamePostType> <CityName>Swarthmore,</CityName> <StateName>Pennsylvania,</StateName> <CountryName>USA</CountryName></TokenSequence>
+  <TokenSequence><CityName>Oxford</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>London</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Berlin</CityName>
+  </TokenSequence>
+  <TokenSequence><BuildingName>Shaw</BuildingName> <BuildingName>Centre,</BuildingName> <CountryName>Singapore</CountryName></TokenSequence>
+  <TokenSequence><CityName>Sutton</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Dublin</CityName>
+  </TokenSequence>
+  <TokenSequence><RegionName>Ontario,</RegionName> <CountryName>Canada</CountryName> <NotAddress>Postal</NotAddress> <NotAddress>Code,</NotAddress></TokenSequence>
+  <TokenSequence><CityName>Oxford</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Galway</CityName>
+  </TokenSequence>
+  <TokenSequence><AddressNumber>25</AddressNumber> <StreetName>Canada</StreetName> <StreetNamePostType>Square,</StreetNamePostType> <CityName>Canary</CityName> <CityName>Wharf</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>1-2-7</AddressNumber> <StreetName>Shintomi,</StreetName> <RegionName>Kawagoe,</RegionName> <CityName>Saitama,</CityName> <CountryName>Japan</CountryName></TokenSequence>
+  <TokenSequence><CityName>GENOVA</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>POHJOLA,</CityName> <CountryName>Finland</CountryName></TokenSequence>
+  <TokenSequence><CityName>Zurich</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>London</CityName>
+  </TokenSequence>
+  <TokenSequence><AddressNumber>21,</AddressNumber> <StreetName>Panepistimiou</StreetName> <StreetNamePostType>St.</StreetNamePostType> <CityName>Athens,</CityName> <CountryName>Greece</CountryName></TokenSequence>
+  <TokenSequence><CityName>Ottawa,</CityName> <RegionName>Ontario,</RegionName> <CountryName>Canada</CountryName></TokenSequence>
+  <TokenSequence><CityName>Laval,</CityName> <RegionName>Qc,</RegionName> <CountryName>Canada,</CountryName></TokenSequence>
+  <TokenSequence><RegionName>West</RegionName> <RegionName>Sussex.</RegionName></TokenSequence>
+  <TokenSequence><CityName>Columbia,</CityName> <StateName>SC</StateName> <CountryName>USA</CountryName></TokenSequence>
+  <TokenSequence><RegionName>BRUSSELS,</RegionName> <CityName>BELGIUM</CityName></TokenSequence>
+  <TokenSequence><CityName>Dublin</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Rochester,</CityName> <StateName>MN,</StateName> <RegionName>USA</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>20</AddressNumber> <StreetName>QUEEN</StreetName> <StreetNamePostType>St.</StreetNamePostType> <NotAddress>West,</NotAddress> <CityName>TORONTO,</CityName> <RegionName>ONTARIO,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Lewes,</CityName> <RegionName>East</RegionName> <RegionName>Sussex,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Slough</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Valbonne</CityName> <CountryName>France</CountryName></TokenSequence>
+  <TokenSequence><CityName>Berlin</CityName>
+  </TokenSequence>
+  <TokenSequence><CityName>Montreal,</CityName> <RegionName>Qc,</RegionName> <CountryName>Canada</CountryName></TokenSequence>
+  <TokenSequence><CityName>Jerusalem,</CityName> <CountryName>Israel</CountryName></TokenSequence>
+  <TokenSequence><CityName>Villeurbanne</CityName> <CountryName>France</CountryName></TokenSequence>
+  <TokenSequence><StreetName>Paseo</StreetName> <StreetName>de</StreetName> <StreetName>Recoletos,</StreetName> <AddressNumber>19</AddressNumber> <ZipCode>28004</ZipCode> <CityName>Madrid;</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>2</AddressNumber> <StreetName>Ibn</StreetName> <StreetName>Gvirol</StreetName> <StreetNamePostType>Street;</StreetNamePostType> <CityName>Tel</CityName> <CityName>Aviv</CityName> <ZipCode>64077</ZipCode></TokenSequence>
+  <TokenSequence><RegionName>Green</RegionName> <RegionName>park,</RegionName> <CityName>Reading</CityName></TokenSequence>
+  <TokenSequence><CityName>Vilnius,</CityName> <CountryName>Lithuania</CountryName></TokenSequence>
+  <TokenSequence><RegionName>Canary</RegionName> <RegionName>Wharf</RegionName> <CityName>London</CityName></TokenSequence>
+  <TokenSequence><RegionName>Canary</RegionName> <RegionName>Warf,</RegionName> <CityName>London,</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>1753</AddressNumber> <StreetName>Pinnacle</StreetName> <StreetNamePostType>Drive,</StreetNamePostType> <SubaddressType>3rd</SubaddressType> <SubaddressIdentifier>Floor;</SubaddressIdentifier> <CityName>McLean,</CityName> <StateName>VA</StateName> <ZipCode>22102</ZipCode></TokenSequence>
+  <TokenSequence><CountryName>Ireland</CountryName></TokenSequence>
+  <TokenSequence><StreetName>Pipers</StreetName> <StreetNamePostType>Way,</StreetNamePostType> <CityName>Swindon,</CityName> <RegionName>Wiltshire,</RegionName> <CountryName>UK</CountryName></TokenSequence>
+  <TokenSequence><CityName>Chatham,</CityName> <RegionName>Kent.</RegionName></TokenSequence>
+  <TokenSequence><AddressNumber>1-4</AddressNumber> <StreetName>BERKELEY</StreetName> <StreetName>SQ</StreetName> <StreetName>HOUSE,</StreetName> <CityName>LONDON,</CityName></TokenSequence>
+  <TokenSequence><AddressNumber>8</AddressNumber> <StreetName>Century</StreetName> <StreetNamePostType>Avenue,</StreetNamePostType> <RegionName>Pudong,</RegionName> <CityName>Shanghai</CityName></TokenSequence>
+  <TokenSequence><CityName>Southampton,</CityName> <CountryName>UK</CountryName></TokenSequence>
+  <TokenSequence><CityName>Farnborough,</CityName> <CountryName>UK</CountryName></TokenSequence>
+  <TokenSequence><CityName>GIVAJUME,</CityName> <CountryName>ISRAEL</CountryName></TokenSequence>
+  <TokenSequence><CityName>Copenhagen</CityName> <CityName>K</CityName></TokenSequence>
+  <TokenSequence><BuildingName>Gillingham</BuildingName> <BuildingName>Business</BuildingName> <BuildingName>Park,</BuildingName> <CityName>Gillingham,</CityName> <RegionName>Kent,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Ware,</CityName> <RegionName>Hertfordshire,</RegionName></TokenSequence>
+  <TokenSequence><CityName>Cape</CityName> <CityName>Carteret,</CityName> <StateName>NC,</StateName> <CountryName>USA</CountryName> <ZipCode>28584</ZipCode></TokenSequence>
+  <TokenSequence><AddressNumber>65</AddressNumber> <StreetName>Aldwych,</StreetName> <CityName>London</CityName></TokenSequence>
+  <TokenSequence><CityName>London</CityName></TokenSequence>
+  <TokenSequence><BuildingName>Gillingham</BuildingName> <BuildingName>Business</BuildingName> <BuildingName>Park,</BuildingName></TokenSequence>
+  <TokenSequence><USPSBoxType>PO</USPSBoxType> <USPSBoxType>Box</USPSBoxType> <USPSBoxID>300</USPSBoxID> <CityName>Lausanne</CityName></TokenSequence>
+  <TokenSequence><CityName>Tunbridge</CityName> <CityName>Wells</CityName></TokenSequence>
+  <TokenSequence><StreetName>Bailey</StreetName> <StreetNamePostType>Drive,</StreetNamePostType> <BuildingName>Gillingham</BuildingName> <BuildingName>Business</BuildingName> <BuildingName>Park,</BuildingName></TokenSequence>
+  <TokenSequence><CityName>Praha</CityName> <ZipCode>4</ZipCode></TokenSequence>
+  <TokenSequence><RegionName>Kangnam-Gu,</RegionName> <CityName>Seoul</CityName> <CountryName>Korea</CountryName></TokenSequence>
+  <TokenSequence><CityName>Sanremo,</CityName> <CountryName>Italy</CountryName></TokenSequence>
+  <TokenSequence><CityName>Madrid,</CityName> <CountryName>Spain</CountryName></TokenSequence>
+  <TokenSequence><BuildingName>Underbank</BuildingName> <BuildingName>Hall,</BuildingName> <CityName>Stockport,</CityName></TokenSequence>
+  <TokenSequence><CityName>Praha</CityName> <ZipCode>2,</ZipCode> <CountryName>Czech</CountryName> <CountryName>Republic</CountryName></TokenSequence>
+  <TokenSequence><CityName>London;</CityName></TokenSequence>
+  <TokenSequence><USPSBoxType>PO</USPSBoxType> <USPSBoxType>Box</USPSBoxType> <USPSBoxID>1000,</USPSBoxID> <CountryName>UK</CountryName></TokenSequence>
+  <TokenSequence><CityName>Tunbridge</CityName> <CityName>Wells,</CityName> <RegionName>Kent</RegionName></TokenSequence>
 </Collection>

@@ -1,4 +1,19 @@
 #!/usr/bin/env python2
+
+"""
+Address parser. This program is highly reliant on zipcodes to determine what kind of parsing it applies.
+
+This is how the program deals with the addresses.
+    1. Splits the address into two where the semicolon is.
+    2. Preserves the front part and checks to see if the 1st section is an address. If it contains traces of "State",
+       "City", etc, it runs the first part through the regional parse method.
+    3. The second part of the address is run through the regional parse method. This will separate out the State, City,
+       Country, and other regional aspects of the address, and add that data to a dictionary, which will be returned to
+       the main method.
+    4. The street address is added into the dictionary, and the dictionary's information is parsed into an array and
+       dropped into the CSV writer.
+"""
+
 import datetime
 import os
 import usaddress
@@ -17,19 +32,16 @@ def main():
 # Cycles through every single folder in the path, converting each file to an excel file.
 def cycle(folder):
     file_names = folder.seek()
+    print('Cycle start')
+    for name in file_names:
+        data = read("%s%s" % (folder.source, name))
+        stuff, problem = rewrite(data)
+        write(stuff, folder.target, os.path.splitext(name)[0])
+        write(problem, folder.problem, "Problem - %s" % os.path.splitext(name)[0])
+        print("Cycle finished")
 
-    for x in range(0, len(file_names)):
-        print('Cycle start')
-        for name in file_names:
-            data = read("%s%s" % (folder.source, name))
-            stuff, problem = rewrite(data)
-            # write(stuff, folder.target, os.path.splitext(name)[0])
-            write(stuff, folder.target, 'cross')
-            write(problem, folder.problem, os.path.splitext(name)[0])
-            print("Cycle fin")
-
-            for file_data in file_names:
-                os.remove("%s%s" % (folder.source, file_data))
+    for file_data in file_names:
+        os.remove("%s%s" % (folder.source, file_data))
 
 
 # Rewrites the data held within the read array.
@@ -78,7 +90,9 @@ def rewrite(stuff):
 
                 # Special case that adds on the PO Number detected on the other half of the address semicolon.
                 if 'PO' in new:
-                    temp[3] = "%s %s" % (temp[3], new['PO'])
+                    temp[3] = ("%s %s" % (temp[3], new['PO'])).strip()
+                if 'Address2' in new:
+                    temp[3] = ("%s %s" % (temp[3], new['Address2'])).strip()
 
 
                 # Error counter: It tosses out any files that contain a suspiciously low amount of data.
@@ -95,7 +109,6 @@ def rewrite(stuff):
                 else:
                     data.append(temp)
             except ValueError:
-                print("HI")
                 problem.append(stuff[irow])
 
     return data, problem
@@ -117,48 +130,37 @@ class Address:
         data = self.region_parse(region)
 
         data['Street'] = "%s %s" % (data.setdefault('Street', ''), street)
+
         return data
 
-    # Will output another dictionary, combines with other one using update method.
-    def address_parse(self, address):
-        stuff = {'Street': address}
+    """Region parse takes the 2nd part of an address (as determined by the 'rend' method), and runs it through a
+    series of tests to figure out if it is a domestic or international address. Each time the address passes a test,
+    a little bit of address is pulled out of the main address string, and is appended to a dictionary that will be
+    passed along. This makes the parser more accurate, since there is less "odd floating text".
 
-        if address is None:
-            return stuff
-        try:
-            parser = usaddress.tag(address)
-
-            address = [parser[0].setdefault('AddressNumber', ''), parser[0].setdefault('StreetNamePreDirectional', ''),
-                       parser[0].setdefault('StreetNamePreModifier', ''), parser[0].setdefault('StreetName', ''),
-                       parser[0].setdefault('StreetNamePostType', ''), parser[0].setdefault('StreetNamePostDirectional', '')]
-            if address is not None:
-                address = ' '.join(address)
-                address = ' '.join(address.split())
-
-            stuff['Street'] = address
-        except usaddress.RepeatedLabelError:
-            return stuff
-
-        print(parser)
-        return stuff
-
-
-
-    # Does most of the parsing work.
+    What it will first do is run the address through a filter that pulls out all PO Box numbers (which then get slotted
+    into the dictionary). Next, it scans to see if there are any 'Dublin' zip codes (It's a special case, so I didn't
+    include it in the main regex), and does the same thing it did to the PO Box numbers. Then, it runs the address
+    through a regex that searches for US zip codes. If a domestic zip code is located, it is passed through the
+    domestic parser. Else, the address is run through the international zip code regex, which pulls out the
+    international zip codes. If there are no international zip codes located, it is simply run through the domestic
+    parser."""
     def region_parse(self, region):
-        # Scans for international zip
-        # codes, using the regex forms stored in the array below.
-
-        regex_base = ['\W(GIR|[A-Z]\d[A-Z\d]??|[A-Z]{2}\d[A-Z\d]??)[ ]??(\d[A-Z]{2})',
-                      '\W((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))',
-                      '\W([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ])\ {0,1}(\d[ABCEGHJKLMNPRSTVWXYZ]\d)',
-                      '\W(F-)?((2[A|B])|[0-9]{2})[0-9]{3}', '\W(V-|I-)?[0-9]{5}',
-                      '\W(0[289][0-9]{2})|([1345689][0-9]{3})|(2[0-8][0-9]{2})|(290[0-9])|(291[0-4])|(7[0-4][0-9]{2})|(7[8-9][0-9]{2})',
-                      '\W[1-9][0-9]{3}\s?([a-zA-Z]{2})?', '([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}',
-                      '\W([D-d][K-k])?( |-)?[1-9]{1}[0-9]{3}', '(s-|S-){0,1}[0-9]{3}\s?[0-9]{2}', '[1-9]{1}[0-9]{3}$',
-                      '\W[^\W\d_]{2}\d \d[^\W\d_]{2}', '[^\W\d_]{2}/d[^\W\d_] /d[^\W\d_]{2}', '\d{3}-\d{4}', '\d{3}-\d{3}'
-                      '\d{6}', '[^\W\d_]{2}-\d{4}', '[^\W\d_]\d{6}', '\W[^\d_]{2}\d', '\W[^\W\d_]{2}-\d{4}',
-                      '\W[^\W\d_]{2}\d \d[^\W\d_]{2}']
+        # Scans for international zip codes, using the regex forms stored in the array below.
+        regex_base = ['NSW \d{4}','\W(GIR|[A-Z]\d[A-Z\d]??|[A-Z]{2}\d[A-Z\d]??)[ ]??(\d[A-Z]{2})\W',
+                      '\W((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\W',
+                      '\W([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ])\ {0,1}(\d[ABCEGHJKLMNPRSTVWXYZ]\d)\W',
+                      '\W(F-)?((2[A|B])|[0-9]{2})[0-9]{3}\W', '\W(V-|I-)?[0-9]{5}\W', '\W[^\W\d_]{2}-\d{4}\W',
+                      '\W\d{6}\W',
+                      '\W(0[289][0-9]{2})|([1345689][0-9]{3})|(2[0-8][0-9]{2})|(290[0-9])|(291[0-4])|(7[0-4][0-9]{2})|(7[8-9][0-9]{2})\W',
+                      '\W[1-9][0-9]{3}\s?([a-zA-Z]{2})?\W', '\W([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}\W',
+                      '\W([D-d][K-k])?( |-)?[1-9]{1}[0-9]{3}\W', '\W(s-|S-){0,1}[0-9]{3}\s?[0-9]{2}\W',
+                      '\W[1-9]{1}[0-9]{3}\W',
+                      '\W[^\W\d_]{2}\d \d[^\W\d_]{2}\W', '\W[^\W\d_]{2}/d[^\W\d_] /d[^\W\d_]{2}\W', '\W\d{3}-\d{4}\W',
+                      '\W\d{3}-\d{3}\W', '\W[^\W\d_]{2}\d \d[^\W\d_]\W',
+                      '\W[^\W\d_]\d{6}\W', '\W[^\d_]{2}\d\W', '\W[^\W\d_]{2}-\d{4}\W',
+                      '\W[^\W\d_]{2}\d \d[^\W\d_]{2}\W', '\W[^\W\d_]{3} \d{4}\W', '\W[^\W\d_]-\d{4}\W',
+                      '\W[^\W\d_]\d{2} [^\W\d_]{3}\W']
 
         # Initialize this with blank values but valid keys, so I can just break out of this method while returning the
         # appropriate data structure if I need to.
@@ -195,17 +197,20 @@ class Address:
             region = ((region.lower()).replace(dubb, ',')).capitalize()
             return self.international(region, filtered_region)
 
-        result = re.search("\W\d{5}([\-]?\d{4})?", region)
+        result = re.search("\W\d{5}([\-]?\d{4})?\W", " %s " % region)
 
         if not result:
             # Finds the international zipcodes, and then strips them from the region string
             for reg in regex_base:
-                results = re.search(reg, " %s" % region)
+                print(region)
+                region = ' '.join(region.split())
+                results = re.search(reg, " %s " % region)
                 if results:
-                    zippy = results.group(0)
+                    zippy = (results.group(0)).strip()
                     filtered_region['Zipcode'] = zippy
                     # print(zippy)
                     region = region.replace(zippy, ',')
+                    break
             if not zippy:
                 # Back to American Parsing. These addresses that make it down here should all be domestic.
                 filtered_region = self.domestic(region, filtered_region)
@@ -221,38 +226,59 @@ class Address:
 
         return filtered_region
 
+    """Parses out international regional codes, once the addresses have been identified as an international address.
+    This function cuts to the chase by passing the address through the international address parser, which separates
+    the address into parts. The first part will scan for a misplaced address, similar to what the 'domestic' method
+    does, and then it will place it into a dictionary if the street address exists. This method does the same for
+    "state", "city", "country", and "region"."""
     @staticmethod
     def international(region, filtered_region):
         try:
-            whee = intaddress.tag(region)
+            inter_parse = intaddress.tag(region)
 
-            address = [whee.setdefault('AddressNumber', ''), whee.setdefault('StreetNamePreDirectional', ''),
-                       whee.setdefault('StreetNamePreModifier', ''), whee.setdefault('StreetName', ''),
-                       whee.setdefault('StreetNamePostType', ''), whee.setdefault('StreetNamePostDirectional', '')]
+            address = [inter_parse.setdefault('AddressNumber', ''),
+                       inter_parse.setdefault('StreetNamePreDirectional', ''),
+                       inter_parse.setdefault('StreetNamePreModifier', ''), inter_parse.setdefault('StreetName', ''),
+                       inter_parse.setdefault('StreetNamePostType', ''),
+                       inter_parse.setdefault('StreetNamePostDirectional', '')]
             if address is not None:
                 address = ' '.join(address)
                 address = ' '.join(address.split())
-            if address:
                 filtered_region['Street'] = address
-            if 'CityName' in whee:
-                filtered_region['City'] = whee['CityName']
-            if 'StateName' in whee:
-                filtered_region['State'] = whee['StateName']
-            if 'CountryName' in whee:
-                filtered_region['Country'] = whee['CountryName']
-            if 'RegionName' in whee:
-                filtered_region['RegionName'] = whee['RegionName']
 
+            if 'CityName' in inter_parse:
+                if filtered_region['City'] == '':
+                    filtered_region['City'] = inter_parse['CityName']
+                elif filtered_region['State'] == '':
+                    filtered_region['State'] = inter_parse['CityName']
+                else:
+                    filtered_region['Address2'] = inter_parse['CityName']
+
+            if 'StateName' in inter_parse:
+                filtered_region['State'] = inter_parse['StateName']
+            if 'CountryName' in inter_parse:
+                filtered_region['Country'] = inter_parse['CountryName']
+            if 'RegionName' in inter_parse:
+                filtered_region['RegionName'] = inter_parse['RegionName']
         except:
-            print("HIEJ")
             raise ValueError
-
-        print(filtered_region)
-
         return filtered_region
 
+
+    """Parsing for domestic elements. First scans to see if there are any spaces or commas in the address field. If
+    neither of those exist, the element is most likely a city name. Next, it scans to see if Washington D.C. is in the
+    string, or anything similar to that. If the similarity ratio exceeds 90%, then the program replaces the DC string
+    with a comma and stores DC as the city name. After that, it simply places the address into the address parser,
+    which separates the address into its elements and is parsed into a dictionary. Recipient and LandmarkName are both
+    key values that I include in the dictionary, because sometime this program mistakes address elements for those.
+    This way, this catches as much information as possible."""
     @staticmethod
     def domestic(region, filtered_region):
+        region = region.strip()
+        if not ' ' in region and not ',' in region:
+            filtered_region['City'] = region
+            return filtered_region
+
         citi = None
         # Because Washington DC has some odd formatting and weird state issues (in maryland, but not technically in
         # maryland), I just created a special case that deals with this string. Uses fuzzy string reading to ID.
@@ -270,11 +296,25 @@ class Address:
         except usaddress.RepeatedLabelError:
             return filtered_region
 
+        # Street addresses returned by the parser may contain some or none of these elements, which is why they are
+        # initially placed into an array to be combined later. This snippet of code is here, in addition to the first
+        # section so that it can catch any misplaced addresses.
+        address = [clean[0].setdefault('AddressNumber', ''),
+                   clean[0].setdefault('StreetNamePreDirectional', ''),
+                   clean[0].setdefault('StreetNamePreModifier', ''), clean[0].setdefault('StreetName', ''),
+                   clean[0].setdefault('StreetNamePostType', ''),
+                   clean[0].setdefault('StreetNamePostDirectional', '')]
+        if address is not None:
+            address = ' '.join(address)
+            address = ' '.join(address.split())
+            filtered_region['Street'] = address
+
         # Reassigns variable values to the dictionary. If these values didn't exist in the firm place within the
         # parser, nothing is done. The setdefault function only works with dictionaries.
         filtered_region['State'] = clean[0].setdefault('StateName', '')
         filtered_region['Zipcode'] = clean[0].setdefault('ZipCode', '')
 
+        # Enters Washington DC
         if citi:
             filtered_region['City'] = citi
         else:
@@ -295,6 +335,9 @@ class Address:
 
         return filtered_region
 
+    """Splits the address by the semicolon in the middle. If the semicolon does not exist, the entire address is just
+    assumed to be a street address. Alternatively, this has a case catch that will scan to see if there are any
+    misplaced elements and it will attempt to place them in the right place."""
     def rend(self):
         if not self.addr.find(';') == -1:
             temp = self.addr.split(';')
@@ -303,23 +346,16 @@ class Address:
                     if 'PlaceName' not in usaddress.tag(temp[0])[0] or 'StateName' not in usaddress.tag(temp[0])[0]:
                         return temp[0], None
                     else:
-                        return None, temp[0]
+                        return '', temp[0]
                 except usaddress.RepeatedLabelError:
                     return temp[0], ''
             return temp[0], temp[1]
         else:
             return self.addr, ''
 
-    @staticmethod
-    def merge(arr, index, end):
-        string = ''
-        while index <= end:
-            string = string + ' ' + arr[index]
-            index += 1
-        string = string.strip()
-        return string
 
-
+# Reads the Excel file. Currently only works for Excel, if support is needed for txt files, tsv, etc, I need to add
+# in another snippet later.
 def read(file_data):
     data = []
     book = xlrd.open_workbook(file_data)
@@ -335,6 +371,7 @@ def read(file_data):
     return data
 
 
+# Redoes the encoding for each element in the table. Turns it into Unicode text, so the CSV reader can handle it.
 def uniform(dictionary_input):
     if isinstance(dictionary_input, dict):
         return {uniform(key): uniform(value) for key, value in dictionary_input.iteritems()}
@@ -346,6 +383,7 @@ def uniform(dictionary_input):
         return dictionary_input
 
 
+# Function that writes the CSV.
 def write(data, pathway, name):
     data = uniform(data)
     now = datetime.date.today().strftime("%m.%d.%y")
